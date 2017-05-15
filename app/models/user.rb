@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :vehicules, through: :orders
+  has_many :ordered_vehicles, through: :orders, source: :vehicle
+  has_many :vehicles
   has_many :orders
 end
