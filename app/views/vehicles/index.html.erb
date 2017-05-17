@@ -1,4 +1,4 @@
-<h1>Vehicles list</h1>
+<h1 class = "text-center">Vehicles list</h1>
 
 <div class="container text-center">
 
@@ -7,13 +7,15 @@
       <% @vehicles.each do |vehicle| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_url 'peugeot205.png' %>);">
-                <div class="card-description">
+          <div class="avatar-card" style="background-image: url(<%= asset_path('logo') %>);"></div>
+                <div class="card-description text-left">
+
                   <h2><%= vehicle.name %></h2>
-                  <h3> <%= vehicle.category.name %></h3>
-                  <h3> <%= vehicle.price %></h3>
-                <%= link_to "show this vehicle", vehicle_path(vehicle) %>
+                  <h3> <%= vehicle.category.name %></3>
+                  <h3> <%= vehicle.price %>€/day</h3>
+                <%= link_to "show this vehicle", vehicle_path(vehicle), class: 'btn btn-success'%>
                 </div>
-                <a class="card-link" href="#" ></a>
+
           </div>
         </div>
       <% end %>
