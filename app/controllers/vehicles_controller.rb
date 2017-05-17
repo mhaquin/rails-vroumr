@@ -3,7 +3,12 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @vehicles = Vehicle.all
+    if params[:query][:category].blank?
+      @vehicles = Vehicle.all
+    else
+      @vehicles = Vehicle.where(category_id: Category.find(params[:query][:category]))
+      # @vehicles = Vehicle.near(params[:query][:address], 10).where(category_id: Category.find(params[:query][:category]))
+    end
   end
 
   def show

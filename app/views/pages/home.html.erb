@@ -3,11 +3,10 @@
     <h1>Wanna travel ?</h1>
     <p>Rent a car !</p>
 
-    <%= simple_form_for :query do |f| %>
+    <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
       <%= f.input :address, placeholder: "Address", label: false %>
       <%= f.input :category, collection: Category.all, label: false %>
       <%= f.submit %>
     <% end %>
-
   </div>
 </div>
