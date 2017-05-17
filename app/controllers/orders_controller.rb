@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
 
+  def new
+     @order = Order.new
+  end
+
   def create
-    @order = Order.new
+    @user = current_user
     @vehicle = Vehicle.find(params[:vehicle_id])
-    @order = @vehicle.orders.new(order_params)
+    @order = @vehicle.orders.new(user: @user)
 
     if @order.save
       redirect_to vehicle_orders_path(@vehicle)
