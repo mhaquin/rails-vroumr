@@ -3,18 +3,17 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "voiture.png" %>
   <% end %>
-
   <!-- Right Navigation -->
+
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
-
+    <div class="share-links">
+      <a href="https://www.facebook.com/lewagonbordeaux/?fref=ts" class="share-link bg-facebook">
+        <i class="fa fa-facebook-square"></i>
+      </a>
+      <a href="https://twitter.com/LeWagonBordeaux?lang=fr" class="share-link bg-twitter">
+        <i class="fa fa-twitter-square"></i>
+      </a>
+    </div>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -54,12 +53,9 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Log In"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn navbar-wagon-link" %>
 
     <% end %>
-
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
