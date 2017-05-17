@@ -2,6 +2,18 @@
   width: 30px;
   border-radius: 50%;
 }
+
+.avatar-card {
+  width: 30px;
+  height:30px;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-size: cover;
+  background-position: center center;
+}
+
 .avatar-large {
   width: 50px;
   border-radius: 50%;

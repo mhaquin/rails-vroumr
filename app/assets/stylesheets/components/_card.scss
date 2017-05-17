@@ -8,6 +8,12 @@
   margin-bottom: 10px;
 }
 
+.card-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .card-description {
   position: absolute;
   bottom: 10px;
@@ -28,6 +34,4 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover{
-  opacity: 0.1;
-}
+

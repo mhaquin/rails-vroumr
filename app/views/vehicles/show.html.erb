@@ -1,8 +1,10 @@
 <div class="container text-center">
   <h1><%= @vehicle.name %></h1>
+  <%= image_tag 'peugeot205.png'%>
+
   <h2><%= @vehicle.category.name %></h2>
   <h2><%= @vehicle.price %></h2>
 
-  <%= link_to "je commande", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
+  <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
 
 
