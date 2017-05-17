@@ -1,23 +1,25 @@
+<h1>Vehicles list</h1>
+
 <div class="container text-center">
-  <h1>Vehicles list</h1>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <% @vehicles.each do |vehicle| %>
-        <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('../assets/images/DS3rouge.png');">
-              <div class="card-description">
-                <h2><%= vehicle.name %></h2>
-                <h3> <%= vehicle.category.name %></h3>
-                <h3> <%= vehicle.price %></h3>
-              <%= link_to "show this vehicle", vehicle_path(vehicle) %>
-              <% end %>
-              </div>
-              <img class="card-user avatar" src="user.jpg">
-              <a class="card-link" href="#" ></a>
-          </div>
-      </div>
-    </div>
-</div>
 
+      <% @vehicles.each do |vehicle| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_url 'peugeot205.png' %>);">
+                <div class="card-description">
+                  <h2><%= vehicle.name %></h2>
+                  <h3> <%= vehicle.category.name %></h3>
+                  <h3> <%= vehicle.price %></h3>
+                <%= link_to "show this vehicle", vehicle_path(vehicle) %>
+                </div>
+                <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+</div>
 
 
