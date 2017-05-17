@@ -2,5 +2,7 @@
   <h1><%= @vehicle.name %></h1>
   <h2><%= @vehicle.category.name %></h2>
   <h2><%= @vehicle.price %></h2>
+  <%= link_to "order this", vehicle_orders_path(@vehicle) %>
+
   <p><%= link_to "Back", root_path %></p>
 </div>
