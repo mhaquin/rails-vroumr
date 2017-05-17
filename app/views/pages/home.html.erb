@@ -2,6 +2,27 @@
   <div class="banner-content">
     <h1>Wanna travel ?</h1>
     <p>Rent a car !</p>
-    <a class="btn btn-primary btn-lg">TRY IT</a>
+
+    <%= simple_form_for :query do |f| %>
+      <%= f.input :address, placeholder: "Address", label: false %>
+      <%= f.input :category, collection: Category.all, label: false %>
+      <%= f.submit %>
+    <% end %>
+
   </div>
+</div>
+
+<div class="share-links">
+  <a href="#" class="share-link bg-facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="#" class="share-link bg-twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="#" class="share-link bg-email">
+    <i class="fa fa-envelope-o"></i>
+  </a>
+  <a href="#" class="share-link bg-text">
+    <i class="fa fa-mobile"></i>
+  </a>
 </div>
