@@ -22,7 +22,7 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:name)
+    params.require(:vehicle).permit(:name, :photo)
   end
 
 end
