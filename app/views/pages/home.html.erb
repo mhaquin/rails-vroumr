@@ -6,14 +6,8 @@
     <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
       <%= f.input :address, placeholder: "Address", label: false %>
       <%= f.input :category, collection: Category.all, label: false %>
-      <%= f.input :date, placeholder: "date", label: false %>
+      <%= f.input :date, placeholder: "date" id='datetimepicker2', label: false %>
       <%= f.submit %>
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker').datepicker({todayHighlight: true, orientation: 'auto top'});
-  });
-</script>

@@ -3,15 +3,27 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    if params[:query][:category].blank?
-      @vehicles = Vehicle.all
-    else
-      @vehicles = Vehicle.where(category_id: Category.find(params[:query][:category]))
-      # @vehicles = Vehicle.near(params[:query][:address], 10).where(category_id: Category.find(params[:query][:category]))
+    @vehicles = Vehicle.all
+
+    if params[:query] && params[:query][:address] != ""
+      @vehicles = @vehicles.near(params[:query][:address], 20)
+    end
+
+    if params[:query] && params[:query][:category] != ""
+      @vehicles = @vehicles.where(category_id: params[:query][:category])
+    end
+
+    @vehicles = @vehicles.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@vehicles) do |vehicle, marker|
+      marker.lat vehicle.latitude
+      marker.lng vehicle.longitude
     end
   end
 
   def show
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle_coordinates = { lat: @vehicle.latitude, lng: @vehicle.longitude }
   end
 
   private
@@ -22,5 +34,4 @@ class VehiclesController < ApplicationController
   def vehicle_params
     params.require(:vehicle).permit(:name)
   end
-
 end

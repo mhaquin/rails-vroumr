@@ -10,8 +10,13 @@ gem 'redis'
 gem 'omniauth-facebook'
 
 gem 'devise'
-
 gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
