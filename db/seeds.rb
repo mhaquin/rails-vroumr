@@ -62,7 +62,10 @@ vehicles_attributes = [
     name:         "Mobylette, Peugeot TSR BB ",
     price:        20.00,
     user:         user1,
-    category:     Category.all.where(name: 'Motorbike').last
+    category:     Category.all.where(name: 'Motorbike').last,
+    address:      "EXO 33 Baurech téléski",
+    latitude:     44.710028,
+    longitude:    -0.434185
   },
   {
     name:         "Peugeot 205",
