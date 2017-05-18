@@ -16,7 +16,9 @@ Geocoder.configure(
   # supports SocketError and Timeout::Error
   # always_raise: [],
   :units => :km,
-  api_key: 'AIzaSyC9loSy_IziXbCJQ1-stenehIuI821Lce8',               # API key for geocoding service
+  :lookup    => :google,
+  :api_key => ENV['GOOGLE_API_KEY'],   # API key for geocoding service
+  :use_https => true,
   # Calculation options
   # units: :mi,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
