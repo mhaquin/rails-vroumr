@@ -1,6 +1,8 @@
 <div class="container text-center">
   <h1><%= @vehicle.name %></h1>
-  <%= image_tag 'peugeot205.png'%>
+  <% if @vehicle.photo? %>
+  <%= cl_image_tag @vehicle.photo.path, width: 500, height: 300, crop: :fill %>
+<% end %>
 
   <h2><%= @vehicle.category.name %></h2>
   <h2><%= @vehicle.price %></h2>
@@ -10,8 +12,8 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      var coord = <%= raw @flat_coordinates.to_json %>;
-      alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+      var coord = <%= raw @vehicle_coordinates.to_json %>;
+      alert('Vehicle coordinates are ' + coord.lat + ', ' + coord.lng);
     });
   <% end %>
 <% end %>
