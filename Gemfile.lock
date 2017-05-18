@@ -221,19 +221,13 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-<<<<<<< HEAD
   bootstrap3-datetimepicker-rails (~> 4.17.47)
-=======
   coffee-rails
->>>>>>> master
   devise
   figaro
   font-awesome-sass
   geocoder
-<<<<<<< HEAD
-=======
   gmaps4rails
->>>>>>> master
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
