@@ -1,4 +1,5 @@
 class Vehicle < ApplicationRecord
+  has_attachment :photo
   belongs_to :category
   belongs_to :user
   has_many :orders
