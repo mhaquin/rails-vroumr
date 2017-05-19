@@ -5,7 +5,11 @@
 <% end %>
 
   <h2><%= @vehicle.category.name %></h2>
+  <h2>Description</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti a nihil doloremque animi dicta eius quis reiciendis omnis esse ratione quasi consequatur modi, repellendus in cum, nulla vitae suscipit vero?</p>
+
   <h2><%= @vehicle.price %></h2>
+  <h3><%= @vehicle.address %></h3>
 
   <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
 
@@ -13,7 +17,6 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       var coord = <%= raw @vehicle_coordinates.to_json %>;
-      alert('Vehicle coordinates are ' + coord.lat + ', ' + coord.lng);
     });
   <% end %>
 <% end %>
