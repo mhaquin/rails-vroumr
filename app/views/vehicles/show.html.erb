@@ -12,6 +12,7 @@
   <h3><%= @vehicle.address %></h3>
 
   <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
+  <br></br>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
