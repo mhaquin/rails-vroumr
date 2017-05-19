@@ -11,7 +11,11 @@
   <h2><%= @vehicle.price %></h2>
   <h3><%= @vehicle.address %></h3>
 
-  <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
+  <%= simple_form_for [@vehicle, Order.new] do |f| %>
+    <%= f.input :date %>
+    <%= f.submit "Rent this vehicle", class:"btn btn-primary"  %>
+  <% end %>
+
   <br></br>
 
 <% content_for(:after_js) do %>
