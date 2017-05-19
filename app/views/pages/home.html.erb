@@ -8,9 +8,6 @@
         <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
           <%= f.input :address, placeholder: "Address", label: false %>
           <%= f.input :category, collection: @categories, label: false, default: "Category" %>
-          <div class="datetimepicker_wrapper">
-            <%= f.input :datetime, label: false, placeholder: 'Date' %>
-          </div>
           <%= f.submit "Search", class:"btn-lg btn-primary" %>
         <% end %>
       </row>
