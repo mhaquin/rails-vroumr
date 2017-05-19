@@ -1,13 +1,14 @@
 <h1 class = "text-center">Vehicles list</h1>
 <div class="container">
   <row class="col-xs-4">
-  <br></br>
   <h2 class = "text-center">Something else ?</h2>
-  <br></br>
     <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
       <%= f.input :address, placeholder: "Address", label: false %>
+      <div class="text-center"><h4>Category</h4>
       <%= f.input :category, collection: Category.all, label: false %>
-       <%= f.submit "search", class: "btn btn-primary" %>
+      <%= f.input :datetime, label: false, placeholder: 'Date' %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </row>
   <row class="col-xs-8">
@@ -48,7 +49,6 @@
                   <h3> <%= vehicle.price %>€/day</h3>
                 <%= link_to "show this vehicle", vehicle_path(vehicle), class: 'btn btn-success'%>
                 </div>
-
           </div>
         </div>
       <% end %>
