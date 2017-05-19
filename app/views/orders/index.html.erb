@@ -1,4 +1,4 @@
 <% @orders.each do |order| %>
-  <h2><%= "#{order.vehicle.name} - #{order.date}" %></h2>
+  <h2><%= "#{order.vehicle.name} - #{order.date.strftime("%a %b %y")}" %></h2>
   <%= link_to "back to the list", vehicles_path %>
 <% end %>

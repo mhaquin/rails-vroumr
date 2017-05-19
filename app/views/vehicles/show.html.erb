@@ -37,13 +37,12 @@
     <h4><strong>Localisation :</strong> <%= @vehicle.address %></h4>
     <br></br>
       <%= simple_form_for [@vehicle, Order.new] do |f| %>
-        <%= f.input :date %>
+        <%= f.input :date, html5: true %>
         <div class="text-center">
           <%= f.submit "Rent this vehicle", class:"btn-lg btn-primary"  %>
         </div>
       <% end %>
-    <br></br>
-    <br></br>
+    <br><br>
 
 
     <% content_for(:after_js) do %>
