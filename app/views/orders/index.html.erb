@@ -1,5 +1,3 @@
-
-
 <div class="container">
 <h2>Your orders</h2>
   <div class="row">
@@ -15,7 +13,7 @@
               <div class='order-card-content'>
                 <h4><%= order.vehicle.name %></h4>
                 <p><%= order.vehicle.price %>€/day</p>
-                  <p><a href="#"><i class="fa fa-check-square" aria-hidden="true"> Rent on (date)</a></i></p>
+                  <p><a href="#"><i class="fa fa-check-square" aria-hidden="true"> Rent on <%= order.date %></a></i></p>
               </div>
               <div class="order-user">
               <img src="<%= asset_path('logo') %>" alt="">

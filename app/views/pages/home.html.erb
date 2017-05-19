@@ -1,20 +1,23 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_url 'background.jpg' %>);">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_url 'vroumr-clés.jpg' %>);">
   <div class="banner-content">
     <div class="banner-title">
-      <h1>Wanna travel ?</h1>
-      <p>Rent a car !</p>
-    </div>
+      <h1>Share my car !</h1>
+      <h4>Rent it</h4>
 
-    <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
-      <%= f.input :address, placeholder: "Address", label: false %>
-      <%= f.input :category, collection: Category.all, label: false %>
-      <div class="datetimepicker_wrapper">
-        <%= f.input :datetime, label: false %>
-      </div>
-      <%= f.submit %>
-    <% end %>
+      <row class="col-xs-12 col-md-12">
+        <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
+          <%= f.input :address, placeholder: "Address", label: false %>
+          <%= f.input :category, collection: @categories, label: false, default: "Category" %>
+          <div class="datetimepicker_wrapper">
+            <%= f.input :datetime, label: false, placeholder: 'Date' %>
+          </div>
+          <%= f.submit "Search", class:"btn btn-primary" %>
+        <% end %>
+      </row>
+    </div>
   </div>
 </div>
+
 
 
 
