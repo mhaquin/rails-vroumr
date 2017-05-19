@@ -6,9 +6,10 @@ class OrdersController < ApplicationController
 
   def create
     @user = current_user
+    @order = Order.new(order_params)
     @vehicle = Vehicle.find(params[:vehicle_id])
-    @order = @vehicle.orders.new(user: @user)
-
+    @order.vehicle = @vehicle
+    @order.user = current_user
     if @order.save
       redirect_to vehicle_orders_path(@vehicle)
     else
@@ -23,6 +24,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :vehicle_id)
+    params.require(:order).permit(:user_id, :vehicle_id, :date)
   end
 end

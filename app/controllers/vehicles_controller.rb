@@ -3,11 +3,12 @@ class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+
     @vehicles = Vehicle.all
     @categories = ["Category"] + Category.all.map(&:name)
 
     if params[:query] && params[:query][:address] != ""
-      @vehicles = @vehicles.near(params[:query][:address], 20)
+      @vehicles = @vehicles.near(query_params[:address], 20)
     end
 
     if params[:query] && params[:query][:category] != "Category"
@@ -39,4 +40,9 @@ class VehiclesController < ApplicationController
   def vehicle_params
     params.require(:vehicle).permit(:name, :photo)
   end
+
+  def query_params
+    params.require(:query).permit(:address, :category, :datetime)
+  end
+
 end
