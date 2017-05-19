@@ -5,13 +5,14 @@ class VehiclesController < ApplicationController
   def index
 
     @vehicles = Vehicle.all
+    @categories = ["Category"] + Category.all.map(&:name)
 
     if params[:query] && params[:query][:address] != ""
       @vehicles = @vehicles.near(query_params[:address], 20)
     end
 
-    if params[:query] && params[:query][:category] != ""
-      @vehicles = @vehicles.where(category_id: query_params[:category])
+    if params[:query] && params[:query][:category] != "Category"
+      @vehicles = @vehicles.where(category: Category.find_by(name: params[:query][:category]))
     end
 
     @vehicles = @vehicles.where.not(latitude: nil, longitude: nil)
@@ -25,6 +26,10 @@ class VehiclesController < ApplicationController
   def show
     @vehicle = Vehicle.find(params[:id])
     @vehicle_coordinates = { lat: @vehicle.latitude, lng: @vehicle.longitude }
+    @hash = Gmaps4rails.build_markers(@vehicle) do |vehicle, marker|
+      marker.lat vehicle.latitude
+      marker.lng vehicle.longitude
+    end
   end
 
   private
