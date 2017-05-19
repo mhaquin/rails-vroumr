@@ -7,7 +7,7 @@
     <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
       <%= f.input :address, placeholder: "Address", label: false %>
       <%= f.input :category, collection: Category.all, label: false %>
-      <%= f.submit %>
+       <%= f.submit "search", class: "btn btn-primary" %>
     <% end %>
   </row>
   <row class="col-xs-8">
