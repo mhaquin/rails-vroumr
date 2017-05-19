@@ -1,0 +1,81 @@
+
+.order-card {
+  border: 1px solid #d6d1d1;
+  height: 125px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  position: relative;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #d6d1d1;
+}
+
+.orders-icons {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0px;
+  font-size: 22px;
+}
+
+.orders-icons > i {
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+}
+
+.order-card-content {
+  width: 300px;
+  color: grey;
+}
+
+li {
+  font-size: 24px;
+  list-style-type: none;
+}
+
+.order-photo > img {
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 2px 2px 2px #d6d1d1;
+}
+
+.order-status {
+  font-size: 15px;
+}
+
+.fa-check-square {
+  color: green;
+  font-size: 24px;
+}
+
+.card-trash {
+  margin-left: 25px;
+  color: red;
+}
+
+.fa-trash {
+  color: #FF7560;
+  &:hover {
+    color: red ;
+  }
+}
+
+.orders-icons {
+    margin-right: 25px;
+}
+
+.order-user > p {
+  color: grey;
+}
+
+.order-user > img {
+  width: 75px;
+  height: 75px;
+  margin-top: 12px;
+}

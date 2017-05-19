@@ -1,4 +1,34 @@
-<% @orders.each do |order| %>
-  <h2><%= order.vehicle.name %></h2>
-  <%= link_to "back to the list", vehicles_path %>
+
+
+<div class="container">
+<h2>Your orders</h2>
+  <div class="row">
+    <% @orders.each do |order| %>
+      <div class="col-md-12">
+        <div class="order-card">
+        <div class="card-trash">
+          <a href="#"><i class="fa fa-trash" aria-hidden="true"></a></i>
+          </div>
+            <div class="order-photo">
+            <%= cl_image_tag order.vehicle.photo.path, width: 150, height: 100, crop: :fill %>
+            </div>
+              <div class='order-card-content'>
+                <h4><%= order.vehicle.name %></h4>
+                <p><%= order.vehicle.price %>€/day</p>
+                  <p><a href="#"><i class="fa fa-check-square" aria-hidden="true"> Rent on (date)</a></i></p>
+              </div>
+              <div class="order-user">
+              <img src="<%= asset_path('logo') %>" alt="">
+              <p class="text-center">Owner</p>
+              </div>
+              <ul class="orders-icons">
+                 <li><a href=""><i class="fa fa-commenting-o"></i> Message</a></li>
+                 <li><a href=""><i class="fa fa-star"></i> Rate the user</a></li>
+              </ul>
+          </div>
+      </div>
     <% end %>
+  </div>
+</div>
+<br/>
+ <p class="text-center"><%= link_to "back to the list", vehicles_path %></p>
