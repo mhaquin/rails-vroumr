@@ -1,25 +1,53 @@
-<div class="container text-center">
-  <h1><%= @vehicle.name %></h1>
-  <% if @vehicle.photo? %>
-  <%= cl_image_tag @vehicle.photo.path, width: 500, height: 300, crop: :fill %>
-<% end %>
+<div class="text-center">
+  <h1><strong><%= @vehicle.name %></strong></h1>
+</div>
+<br></br>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="text-center">
+      <% if @vehicle.photo? %>
+        <%= cl_image_tag @vehicle.photo.path, width: 500, height: 300, crop: :fill %>
+      <% end %>
+      <div id="map" style="width: 100%; height: 180px; margin-top: 10px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;"></div>
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' }, provider: { scrollwheel: false } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h4><strong>Category :</strong> <%= @vehicle.category.name %></h4>
+    <h4><strong>Description :</strong></h4>
+    <p>Le confort et la tenue de route exigent que les roues soient suspendues : leur liaison, directe ou indirecte, avec le châssis ou la coque est à la fois élastique et amortie. De même, le pneumatique assure une liaison élastique entre la chaussée et la roue, dotée elle-même d'un amortissement interne dans le matériau du pneumatique qui se déforme. </p>
+    <h4><strong>Prix :</strong> <%= @vehicle.price %> €</h4>
+    <h4><strong>Localisation :</strong> <%= @vehicle.address %></h4>
+    <br></br>
+    <br></br>
+    <div class="text-center">
+      <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn-lg btn-primary" %>
+    </div>
+    <br></br>
 
-  <h2><%= @vehicle.category.name %></h2>
-  <h2>Description</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti a nihil doloremque animi dicta eius quis reiciendis omnis esse ratione quasi consequatur modi, repellendus in cum, nulla vitae suscipit vero?</p>
-
-  <h2><%= @vehicle.price %></h2>
-  <h3><%= @vehicle.address %></h3>
-
-  <%= link_to "Rent this vehicle", vehicle_orders_path(@vehicle), method: :post, class:"btn btn-primary" %>
-  <br></br>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @vehicle_coordinates.to_json %>;
-    });
-  <% end %>
-<% end %>
-
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var coord = <%= raw @vehicle_coordinates.to_json %>;
+        });
+      <% end %>
+    <% end %>
+  </div>
+</div>
 

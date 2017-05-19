@@ -4,10 +4,10 @@
   <h2 class = "text-center">Something else ?</h2>
     <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
       <%= f.input :address, placeholder: "Address", label: false %>
-      <div class="text-center"><h4>Category</h4>
-      <%= f.input :category, collection: Category.all, label: false %>
-      <%= f.input :datetime, label: false, placeholder: 'Date' %>
-      <%= f.submit "Search", class: "btn btn-primary" %>
+      <div class="text-center">
+        <%= f.input :category, collection: @categories, label: false, default: "Category" %>
+        <%= f.input :datetime, label: false, placeholder: 'Date' %>
+        <%= f.submit "Search", class: "btn-lg btn-primary" %>
       </div>
     <% end %>
   </row>
@@ -35,26 +35,21 @@
 <br></br>
 
 <div class="container text-center">
-
-    <div class="row">
-
-      <% @vehicles.each do |vehicle| %>
-        <div class="col-xs-12 col-sm-4">
+  <div class="row">
+    <% @vehicles.each do |vehicle| %>
+      <div class="col-xs-12 col-sm-4">
           <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path vehicle_picture(vehicle), height: 300, width: 400, crop: :fill %>');">
-          <div class="avatar-card" style="background-image: url(<%= asset_path('logo') %>);"></div>
-                <div class="card-description text-left">
-
-                  <h2><%= vehicle.name %></h2>
-                  <h3> <%= vehicle.category.name %></3>
-                  <h3> <%= vehicle.price %>€/day</h3>
-                <%= link_to "show this vehicle", vehicle_path(vehicle), class: 'btn btn-success'%>
-                </div>
+            <div class="avatar-card" style="background-image: url(<%= asset_path('logo') %>);"></div>
+            <div class="card-description text-left">
+              <h2> <%= vehicle.name %></h2>
+              <h3> <%= vehicle.category.name %></3>
+              <h3> <%= vehicle.price %>€/day</h3>
+            </div>
+            <%= link_to '', vehicle_path(vehicle), class:"card-link" %>
           </div>
-        </div>
-      <% end %>
-
-    </div>
-
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
