@@ -2,13 +2,12 @@
   <div class="banner-content">
     <div class="banner-title">
       <h1>Share my car !</h1>
-      <p>Rent it</p>
+      <h4>Rent it</h4>
 
       <row class="col-xs-12 col-md-12">
         <%= simple_form_for :query, url: vehicles_path, method: :get do |f| %>
           <%= f.input :address, placeholder: "Address", label: false %>
-          <h4>Category</h4>
-          <%= f.input :category, collection: Category.all, label: false, placeholder: Category %>
+          <%= f.input :category, collection: @categories, label: false, default: "Category" %>
           <div class="datetimepicker_wrapper">
             <%= f.input :datetime, label: false, placeholder: 'Date' %>
           </div>
